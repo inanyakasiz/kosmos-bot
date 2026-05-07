@@ -1,5 +1,3 @@
-
-import time
 import hashlib
 import requests
 from bs4 import BeautifulSoup
@@ -12,9 +10,8 @@ URLS = [
     "https://kosmosvize.com.tr/tr-tr/duyurular",
 ]
 
-KONTROL_ARALIGI = 300  # 5 dakika
-
 def telegram_gonder(mesaj):
+
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
     requests.post(
@@ -42,18 +39,19 @@ def sayfa_metni_al(url):
     return soup.get_text(" ", strip=True).lower()
 
 def hash_al(text):
+
     return hashlib.sha256(text.encode()).hexdigest()
 
 def kontrol_et():
 
-    onceki_hashler = {}
-
-       telegram_gonder("Kosmos kontrolü başladı.")
+    telegram_gonder("Kosmos kontrolü başladı.")
 
     for url in URLS:
 
         try:
+
             text = sayfa_metni_al(url)
+
             mevcut_hash = hash_al(text)
 
             telegram_gonder(
@@ -61,6 +59,7 @@ def kontrol_et():
             )
 
         except Exception as e:
+
             telegram_gonder(
                 f"Hata oluştu:\n{url}\n{str(e)}"
             )
