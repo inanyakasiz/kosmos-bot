@@ -48,37 +48,22 @@ def kontrol_et():
 
     onceki_hashler = {}
 
-    telegram_gonder("Kosmos takip sistemi başlatıldı.")
+       telegram_gonder("Kosmos kontrolü başladı.")
 
-    while True:
+    for url in URLS:
 
-        for url in URLS:
+        try:
+            text = sayfa_metni_al(url)
+            mevcut_hash = hash_al(text)
 
-            try:
+            telegram_gonder(
+                f"Kosmos kontrol edildi:\n{url}"
+            )
 
-                text = sayfa_metni_al(url)
-
-                mevcut_hash = hash_al(text)
-
-                if url not in onceki_hashler:
-                    onceki_hashler[url] = mevcut_hash
-                    continue
-
-                if mevcut_hash != onceki_hashler[url]:
-
-                    onceki_hashler[url] = mevcut_hash
-
-                    telegram_gonder(
-                        f"Kosmos sayfasında değişiklik algılandı:\n{url}"
-                    )
-
-            except Exception as e:
-
-                telegram_gonder(
-                    f"Hata oluştu:\n{url}\n{str(e)}"
-                )
-
-        time.sleep(KONTROL_ARALIGI)
+        except Exception as e:
+            telegram_gonder(
+                f"Hata oluştu:\n{url}\n{str(e)}"
+            )
 
 if __name__ == "__main__":
     kontrol_et()
