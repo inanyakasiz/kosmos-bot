@@ -4,8 +4,8 @@ import json
 import requests
 from bs4 import BeautifulSoup
 
-BOT_TOKEN = os.environ["8427789852:AAFpor05eEx8dqHxmH25CE9kJCsBj1yyyOg"]
-CHAT_ID = os.environ["1683085249"]
+BOT_TOKEN = os.environ["BOT_TOKEN"]
+CHAT_ID = os.environ["CHAT_ID"]
 
 URLS = [
     "https://kosmosvize.com.tr/",
@@ -26,7 +26,7 @@ def telegram_gonder(mesaj):
         },
         timeout=20
     )
- 
+
 def sayfa_metni_al(url):
 
     headers = {
