@@ -26,7 +26,7 @@ def telegram_gonder(mesaj):
         },
         timeout=20
     )
-
+ 
 def sayfa_metni_al(url):
 
     headers = {
