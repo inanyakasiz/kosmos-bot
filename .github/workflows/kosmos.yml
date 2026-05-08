@@ -21,5 +21,8 @@ jobs:
       - name: Paketleri kur
         run: pip install -r requirements.txt
 
-      - name: Botu çalıştır
+           - name: Botu çalıştır
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
         run: python kosmos_takip.py
