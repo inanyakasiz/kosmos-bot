@@ -18,6 +18,14 @@ jobs:
         with:
           python-version: "3.10"
 
+      - name: Hash dosyasını geri yükle
+        uses: actions/cache@v4
+        with:
+          path: hashler.json
+          key: hashler-${{ github.run_id }}
+          restore-keys: |
+            hashler-
+
       - name: Paketleri kur
         run: pip install -r requirements.txt
 
