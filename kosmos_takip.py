@@ -1,10 +1,11 @@
+import os
 import hashlib
 import json
 import requests
 from bs4 import BeautifulSoup
 
-BOT_TOKEN = "8427789852:AAFpor05eEx8dqHxmH25CE9kJCsBj1yyyOg"
-CHAT_ID = "1683085249"
+BOT_TOKEN = os.environ["8427789852:AAFpor05eEx8dqHxmH25CE9kJCsBj1yyyOg"]
+CHAT_ID = os.environ["1683085249"]
 
 URLS = [
     "https://kosmosvize.com.tr/",
